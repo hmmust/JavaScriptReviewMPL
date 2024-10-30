@@ -10,6 +10,7 @@ console.log(Nart['fullname']);
 Nart.age= 22.5;
 console.log(Nart.address.area);
 console.log(Nart.hobbies[0]);
+delete Nart.age;
 // for(let k in Nart)
 //     console.log(k,Nart[k]);
 
