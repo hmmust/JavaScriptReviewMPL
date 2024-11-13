@@ -1,11 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-router.get("/",(req,res)=>{
-    res.render("index.ejs");
-    });
-router.get("/about/:userName",(req,res)=>{
-        res.write(`<h1>Welcome ${req.params.userName}</h1>`);
-        res.end();
-});
+const shopController = require("../controllers/shop");
+router.get("/index",shopController.getIndex);
+router.get("/products",shopController.getProducts);
+router.post("/products",shopController.postProducts);
 
-exports.router = router;
+router.get("/product-details",shopController.getProduct);
+
+
+
+
+module.exports= router;
