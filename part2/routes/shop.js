@@ -6,6 +6,8 @@ router.get("/products",shopController.getProducts);
 router.post("/products",shopController.postProducts);
 
 router.get("/product-details",shopController.getProduct);
+router.get("/allproducts",shopController.getAllProducts);
+
 
 
 
