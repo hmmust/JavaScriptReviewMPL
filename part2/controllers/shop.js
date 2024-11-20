@@ -2,7 +2,7 @@ const getIndex = (req,res)=>{
     res.render("index.ejs");
 };
 const getProducts= (req,res)=>{
-    res.render("shop/product.ejs");
+    res.render("shop/product.ejs",{title:"Add Product"});
 };
 const postProducts= (req,res)=>{
     res.send("<h1>Form reveived</h1>");
@@ -18,6 +18,7 @@ const getProduct= (req,res)=>{
 };
 const getAllProducts= (req,res)=>{
     res.render("shop/all-products.ejs", { 
+        title:"All Products",
     products:[
         {name:"Halibona Milk",price:5},
         {name:"Rabee Tea",price:3},
