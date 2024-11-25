@@ -6,13 +6,15 @@
         <tr>
             <th>Name</th>
             <th>Price (JD)</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-         <% for(p of products){ %>
+         <% for([i,p] of products.entries()){ %>
             <tr>
                 <td><%= p.name%></td>
                 <td><%= p.price%></td>
+                <td><a href="/shop/deleteproduct/<%= i %>">delete</a></td>
             </tr>
         <%}%>
     </tbody>

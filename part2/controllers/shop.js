@@ -1,3 +1,5 @@
+const products = require("../models/products");
+
 const getIndex = (req,res)=>{
     res.render("index.ejs");
 };
@@ -5,8 +7,10 @@ const getProducts= (req,res)=>{
     res.render("shop/product.ejs",{title:"Add Product"});
 };
 const postProducts= (req,res)=>{
-    res.send("<h1>Form reveived</h1>");
-};
+    //console.log(req.body.name);
+    products.addProduct(req.body.name,req.body.price);
+    res.redirect("/shop/allproducts");
+};   
 const getProduct= (req,res)=>{
     res.render("shop/product-details",
         {
@@ -19,11 +23,7 @@ const getProduct= (req,res)=>{
 const getAllProducts= (req,res)=>{
     res.render("shop/all-products.ejs", { 
         title:"All Products",
-    products:[
-        {name:"Halibona Milk",price:5},
-        {name:"Rabee Tea",price:3},
-        {name:"Ameed Coffeee",price:3.5},
-    ] });
+    products: products.shop_products });
 
 };
 exports.getIndex=getIndex;
