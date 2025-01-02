@@ -9,8 +9,21 @@ const bodyParser=require('body-parser');
 const path = require("path");
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+const expressSession=require('express-session');
+const MongoDBSession=require('connect-mongodb-session')(expressSession);
+
+const mdbsession = MongoDBSession({uri:"mongodb://localhost:27017/shop",collection:'sessions' });
+app.use(expressSession({secret:'Hossam',resave:false,saveUninitialized:false,store:mdbsession}));
+
+
+const authRouter = require("./routes/auth");
+app.use("/auth",authRouter);
+
+
 const shopRouter = require('./routes/shop');
 app.use(shopRouter);
+
 const adminRoutes=require('./routes/admin');
 app.use('/admin',adminRoutes);
 const errorController=require('./controllers/errors');

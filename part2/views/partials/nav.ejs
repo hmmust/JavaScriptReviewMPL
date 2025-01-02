@@ -6,17 +6,31 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
+        <% if(isAuth){%>
         <li class="nav-item">
           <a class="nav-link" href="/admin/add-product">Add Product</a>
         </li>
+        <%}%>
         <li class="nav-item">
-          <a class="nav-link" href="/admin/products">All Products</a>
+          <a class="nav-link" href="/products">All Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/products">Admin Products</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">View Product</a>
         </li>    
       </ul>
-    </div>  
+      <div class="navbar-nav ml-auto">
+        <% if(!isAuth) {%>
+        <a class="nav-link" href="/auth/login">Login</a>
+        <%}%>
+        <% if(isAuth) {%>
+          <a class="nav-link" href="/auth/logout">Logout</a>
+          <%}%>
+      </div> 
+    </div> 
+
   </nav>
   <div class="container-fluid" style="margin-top:30px">
     <div class="row">

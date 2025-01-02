@@ -1,7 +1,7 @@
 const Product = require("../models/product");
 
 exports.getAddProduct= (req,res,next)=> {
-    res.render("admin/add-product",{title:"Add Product"});
+    res.render("admin/add-product",{title:"Add Product",isAuth:req.session.isAuthenticated});
 };
 exports.postAddProduct= (req,res,next)=>{
     const new_product = new Product({
@@ -15,7 +15,7 @@ exports.postAddProduct= (req,res,next)=>{
 exports.getEditProduct= (req,res,next)=> {
     const product_id = req.params.ProductId;
     Product.findById(product_id).then((product)=>{
-        res.render("admin/edit-product",{title:"Edit Product",prod:product});
+        res.render("admin/edit-product",{title:"Edit Product",prod:product,isAuth:req.session.isAuthenticated});
     });
 
 };
@@ -40,7 +40,7 @@ exports.getDeleteProduct= (req,res,next)=>{
 
 exports.getProducts = (req,res,next)=> {
     Product.find().then((allproducts)=>{
-        res.render("admin/products",{title:"All Products",products:allproducts});
+        res.render("admin/products",{title:"All Products",products:allproducts, isAuth:req.session.isAuthenticated});
     })
 
 };
