@@ -1,7 +1,10 @@
 const Product = require("../models/product");
 
 exports.getAddProduct= (req,res,next)=> {
-    res.render("admin/add-product",{title:"Add Product",isAuth:req.session.isAuthenticated});
+    res.render("admin/add-product",{title:"Add Product",isAuth:req.session.isAuthenticated,
+        errors:[],
+        data:[]
+    });
 };
 exports.postAddProduct= (req,res,next)=>{
     const new_product = new Product({
